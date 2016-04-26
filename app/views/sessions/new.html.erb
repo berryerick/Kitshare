@@ -1,0 +1,40 @@
+<header>
+  <h1>KITSHARE</h1>
+  <%if @user_session %>
+    <a href="/sessions/<%= @user_session.id %>" data-method="delete">Logout</a>
+  <% else %>
+
+  <% end %>
+</header>
+
+<form class="register" action="/users/login" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <div class="field">
+    <label for="user[email]">Email:</label>
+    <input type="text" name="user[email]" >
+  </div>
+
+  <div class="field">
+    <label for="user[password]">password:</label>
+    <input type="password" name="user[password]" >
+  </div>
+
+  <div class="errors">
+    <% if flash[:login_errors] %>
+        <p class="red"><%=flash[:login_errors]%></p>
+    <%end%>
+  </div>
+
+  <div class="submit">
+    <input type="submit" name="name" value="Login">
+  </div>
+
+</form>
+
+<div class="box">
+  <p>Don't have an account? <a href="/users/new">Register!</a> </p>
+
+
+</div>

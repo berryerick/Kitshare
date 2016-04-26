@@ -1,0 +1,2 @@
+module KitCommentsHelper
+end

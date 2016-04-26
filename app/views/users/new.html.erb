@@ -1,0 +1,54 @@
+<header>
+  <h1>KITSHARE</h1>
+  <%if @user_session %>
+    <a href="/sessions/<%= @user_session.id %>" data-method="delete">Logout</a>
+  <% else %>
+  <% end %>
+</header>
+
+<form class="register" action="/users" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <div class="field">
+    <label for="user[first_name]">First Name:</label>
+    <input type="text" name="user[first_name]" >
+  </div>
+
+  <div class="field">
+    <label for="user[last_name]">Last Name:</label>
+    <input type="text" name="user[last_name]" >
+  </div>
+
+  <div class="field">
+    <label for="user[email]">Email:</label>
+    <input type="text" name="user[email]" >
+  </div>
+
+  <div class="field">
+    <label for="user[password]">Password:</label>
+    <input type="password" name="user[password]" >
+  </div>
+
+  <div class="field">
+    <label for="user[password_confirmation]">Confirm PW:</label>
+    <input type="password" name="user[password_confirmation]" >
+  </div>
+
+  <div class="errors">
+    <% if flash[:registration_errors] %>
+      <% flash[:registration_errors].each do |error| %>
+        <p class="red"><%=error%></p>
+      <%end%>
+    <%end%>
+  </div>
+
+  <div class="submit">
+    <input type="submit" name="name" value="Register">
+  </div>
+
+  <div class="box">
+    <p>Already have an account?  <a href="/sessions/new">Login</a> </p>
+  </div>
+
+</form>
