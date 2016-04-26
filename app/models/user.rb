@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :kit_comments, :item_comments, :kits, :likes, dependant: :destroy
-  has_many :items
-  has_one :session, dependant: :destroy
+  has_many :kit_comments, dependent: :destroy
+  has_many :item_comments, dependent: :destroy
+  has_many :kits, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_one :session, dependent: :destroy
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
 
