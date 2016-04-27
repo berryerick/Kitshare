@@ -13,3 +13,204 @@
  *= require_tree .
  *= require_self
  */
+:root{
+  --accent-color: #E84E2C;
+  --input-color: #64ACBC;
+  --whitehover-color: #E8DCDA;
+  --accenthover-color: #DD6E52;
+
+}
+*{
+   font-family: sans-serif;
+   margin: 0;
+   padding: 0;
+   border: 0;
+}
+body{
+  margin-top:82px;
+}
+header{
+  position: fixed;
+  margin-top: -82px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 16px solid var(--accent-color);
+}
+  div.logo{
+    width: 50%;
+    min-width: 120px;
+    display: inline-block;
+    vertical-align: middle;
+    /*padding: 5px 0;*/
+  }
+  div.logo h1{
+    margin: 10px 20px;
+
+    /*display: inline;*/
+  }
+  div.header_links{
+    width: 40%;
+    min-width: 120px;
+    display: inline-block;text-align: right;
+    vertical-align: middle;
+  }
+
+form.new{
+  display: inline-block;
+  width: 380px;
+  padding-top: 20px;
+  border: 2px solid var(--accent-color);
+  border-bottom: 8px solid var(--accent-color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+  div.field{
+    height: 30px;
+  }
+    label{
+      font-size: 1.125em;
+      display: inline-block;;
+      width: 150px;
+      text-align: right;
+      margin-right: 20px;
+    }
+
+.form_text{
+  height: 25px;
+  width: 170px;
+  border: 2px solid var(--input-color);
+  border-radius: 3px;
+  vertical-align: middle;
+  display: inline-block;
+  padding-left: 5px;
+  font-size: 1em;
+}
+  div.submit{
+    text-align: right;
+    margin: 20px;
+
+  }
+  div.errors{
+    width: 95%;
+    background-color: var(--accent-color);
+    color: white;
+    text-align: left;
+    padding-left: 5%;
+    padding-top: 8px;
+  }
+
+nav{
+  /*margin-top: 80px;*/
+  position: fixed;
+  display: inline-block;
+  width: 100%;
+  height: 800px;
+  /*border-right: 2px solid var(--accent-color);*/
+  border-bottom-right-radius:  10px;
+  vertical-align: top;
+
+}
+  ul.nav{
+    display: inline-block;
+  }
+    ul.nav li{
+      display: inline-block;
+    }
+  nav form{
+    background-color: none;
+    text-align: center;
+    vertical-align: middle;
+    min-width: 250px;
+    border-right: 2px solid var(--accent-color);
+    border-bottom: 8px solid var(--accent-color);
+    padding: 5px;
+    /*background-color: white;*/
+
+
+  }
+  .dropdown{
+    vertical-align: top;
+    wid
+  }
+  .nav-btn{
+    width: 100%;
+    height: 40px;
+    font-size: 1.125em;
+    background: none;
+  }
+
+  .dropdown:hover{
+    background-color: var(--whitehover-color);
+  }
+
+  .dropdown-content{
+    background-color: var(--accent-color);
+    font-size: 1em;
+    color: white;
+    display: none;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-bottom: 8px solid var(--accent-color);
+  }
+  .nav_link:hover{
+    background-color: var(--accenthover-color);
+  }
+  .nav_link input{
+    color: var(--whitehover-color);
+    font-weight: bold;
+  }
+
+  .dropdown:hover .dropdown-content{
+    display: inline-block;
+  }
+  button.nav_create{
+    margin-top: 5px;
+  }
+  input.nav_create{
+    margin-top: 5px;
+  }
+
+button.btn{
+  padding: 5px 10px;
+  background-color: var(--input-color);
+  font-size: 1em;
+  border-radius: 3px;
+}
+
+a{
+   color: #63ACBC;
+   /*font-size: 1.25em;*/
+   text-decoration: none;
+}
+a:hover{
+  color: #53909E
+}
+
+div.container{
+  /*width: 100%;*/
+  margin: 0;
+}
+
+h1{
+  font-weight: 300;
+  font-size: 40px;
+}
+form.create_kit{
+  text-align: right;
+}
+  form.create_kit input, form.create_kit select, form.create_kit textarea {
+    margin: 5px;
+    width: 180px;
+    resize: none;
+    display: block;
+    align-items: right;
+  }
+  form.create_kit textarea{
+    height: 60px;
+  }
+
+div.main_content{
+  padding-top: 100px;
+  padding-left: 20px;
+}

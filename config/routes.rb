@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :users, :sessions, :categories, :likes, :kits, :kit_comments, :kit_items, :items, :item_comments
-  root 'users#index'
+  root 'kits#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

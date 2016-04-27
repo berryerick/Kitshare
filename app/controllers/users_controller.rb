@@ -13,15 +13,20 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.valid?
       user.save
-      session[:user] = User.last
-      redirect to kits_path
+      session[:user_id] = User.last.id
+      redirect_to kits_path
     else
       flash[:registration_errors] = user.errors.full_messages
       redirect_to :back
+    end
 
   end
 
   def show
+    @my_kits = User.find(session[:user_id]).kits
+    @categories = Category.all
+
+
   end
 
   def edit
@@ -36,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name)
+    params.require(:user).permit(:first_name,:last_name, :email, :password, :password_confirmation)
   end
 end

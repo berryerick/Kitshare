@@ -1,2 +1,56 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<header>
+  <div class="logo">
+    <h1>KitShare</h1>
+  </div>
+  <div class="header_links">
+    <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
+  </div>
+</header>
+<nav>
+  <ul class="nav">
+
+    <li class="dropdown">
+        <form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">My Kits</button></form>
+          <div class="dropdown-content">
+            <%if @my_kits%>
+            <% @my_kits.each do |kit|%>
+            <form class="nav_link" action="/kits/<%=kit.id%>">
+              <input class="nav-btn" type="submit" value="<%=kit.title%>">
+            </form>
+            <%end%>
+            <%end%>
+          </div>
+    </li>
+
+    <li class="dropdown"><form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">Categories</button></form>
+        <div class="dropdown-content">
+          <% @categories.each do |category| %>
+            <form class="nav_link" action="/categories/<%=category.id%>"><input class="nav-btn" type="submit" value="<%=category.category_name%>"></form>
+          <%end%>
+
+        </div>
+    </li>
+    <li class="dropdown">
+      <form><button type="button" class="nav-btn">Create a Kew Kit</button></form>
+
+      <!-- <div class="dropdown-content">
+
+      </div> -->
+      <form class="create_kit dropdown-content" action="/kits" method="post">
+
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input class="form_text nav_create" type="text" name="kit[title]" placeholder="Kit Title">
+        <textarea class="form_text" name="kit[description]" placeholder="enter a description" rows="4"></textarea>
+        <select class="nav form_text" name="kit[category_id]">
+          <option default selected value="">Pick a category</option>
+          <% @categories.each do |category| %>
+            <option class="form_text nav" value="<%=category.id%>"><%=category.category_name%></option>
+          <%end%>
+          <option class="form_text nav" value="new category">New Category</option>
+        </select>
+        <button type="submit" class="btn nav_create">Create</button>
+      </form>
+    </li>
+    <!-- <li><form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn"></button></form></li> -->
+  </ul>
+</nav>

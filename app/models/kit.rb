@@ -5,6 +5,7 @@ class Kit < ActiveRecord::Base
   has_many :kit_comments, dependent: :destroy
   has_many :kit_items, dependent: :destroy
 
+validates :title, :user_id, :category_id, :description, presence: true
 
 
 end
