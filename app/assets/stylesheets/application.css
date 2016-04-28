@@ -27,11 +27,11 @@
    border: 0;
 }
 body{
-  margin-top:82px;
+  width: 100vw;
 }
 header{
   position: fixed;
-  margin-top: -82px;
+  /*margin-top: px;*/
   width: 100%;
   background-color: white;
   border-bottom: 16px solid var(--accent-color);
@@ -67,14 +67,13 @@ form.new{
   div.field{
     height: 30px;
   }
-    label{
+    form.new label{
       font-size: 1.125em;
       display: inline-block;;
       width: 150px;
       text-align: right;
       margin-right: 20px;
     }
-
 .form_text{
   height: 25px;
   width: 170px;
@@ -100,15 +99,15 @@ form.new{
   }
 
 nav{
-  /*margin-top: 80px;*/
+  margin-top: 80px;
   position: fixed;
   display: inline-block;
   width: 100%;
-  height: 800px;
+  height: 56px;
   /*border-right: 2px solid var(--accent-color);*/
   border-bottom-right-radius:  10px;
   vertical-align: top;
-
+  /*background-color: white;*/
 }
   ul.nav{
     display: inline-block;
@@ -130,6 +129,7 @@ nav{
   }
   .dropdown{
     vertical-align: top;
+    background-color: white;
     wid
   }
   .nav-btn{
@@ -196,6 +196,7 @@ h1{
   font-weight: 300;
   font-size: 40px;
 }
+
 form.create_kit{
   text-align: right;
 }
@@ -214,3 +215,84 @@ div.main_content{
   padding-top: 100px;
   padding-left: 20px;
 }
+
+.box{
+  display: inline-block;
+  width: 300px;
+  /*height: 350px;*/
+  /*padding: 10px;*/
+  margin: 2px;
+  background-color: var(--accenthover-color);
+
+  border: 2px solid var(--accent-color);
+  border-bottom: 8px solid var(--accent-color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  vertical-align: top;
+}
+  .box_title{
+    background-color: var(--accent-color);
+    vertical-align: middle;
+    padding: 5px;
+    color: white;
+  }
+  .box_description{
+    /*background-color: var(--accent-color);*/
+    height: 20px;
+    color: white;
+    padding:10px;
+
+  }
+  .box_img_crop{
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    text-align: center;
+    /*background-color: var(--accenthover-color);*/
+
+  }
+    .box_img_crop img{
+      /*margin-top: -100px;*/
+      height: 300px;
+      width: 300px;
+      object-fit: cover;
+
+      /*background-color: var(--accenthover-color);*/
+    }
+  .item_form{
+    background-color: var(--accenthover-color);
+
+  }
+    .input{
+      display: inline-block;
+      background-color: white;
+      min-height: 20px;
+      font-size: 1em;
+      width: 245px;
+      margin: 5px 23px;
+      padding: 3px;
+
+    }
+
+    .input_border{
+      border: 2px solid var(--input-color);
+      border-radius: 5px;
+    }
+
+    .textarea{
+        resize: none;
+        height: 100px;
+      }
+      .submit{
+        padding: 5px 10px;
+        background-color: var(--input-color);
+        font-size: 1em;
+        border-radius: 3px;
+        margin-left: 23px;
+      }
+    .item_img{
+      padding: 50px 0;
+      text-align: center;
+      display: inline-block;
+    }
+    h2

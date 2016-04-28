@@ -55,19 +55,62 @@
   </ul>
 </nav>
 <div class="main_content">
+
   <div class="info">
     <h2><%= @kit.title %></h2>
     <h4>by <%= @kit_user.first_name %> <%= @kit_user.last_name %></h4>
     <p><%= @kit.description %></p>
   </div>
+
   <div class="content">
-    <div class="kit_item">
-      <h4>Item title</h4>
-      <p>item description here</p>
-      <div class="item_img_crop">
-        <img class="item_img" src="" alt="kit title image" />
+
+  <%if @kit_items.length>0 %>
+  <% @kit_items.each do |item| %>
+    <div class="box">
+      <div class="box_title">
+        <h3 class="box_title"><%= item.item_name %></h3>
+        
+
       </div>
+      <p class="box_description"><%= item.description %></p>
+      <div class="box_img_crop">
+        <%= image_tag item.item_img.url %>
+      </div>
+
     </div>
+  <%end%>
+  <%end%>
+
+    <%= form_for @item, :url => @items_path, :html =>{:multipart => true, :class => "box item_form"} do |f|%>
+      <h3 class="box_title">Create a new Kit item</h3>
+      <p class="box_description">Create a new item and add it to your kit</p>
+      <div class="box_img_crop">
+        <%= f.text_field :item_name, class: "input input_border", placeholder: "Item Name" %>
+        <div class="input input_border">
+          <%= f.label :item_Img %>
+          <%= f.file_field :item_img %>
+        </div>
+        <%= f.hidden_field :kit_id, value: "#{@kit.id}"%>
+        <%= f.text_area :description , class: "input textarea input_border", placeholder: "Item Description" %>
+        <%= f.submit :create, class: "submit" %>
+      </div>
+    <% end %>
+    <!-- <form class="box" action="/items" method="post">
+      <h3>create a new kit item</h3>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <div class="field">
+        <label for="item[item_name]">Name: </label>
+        <input class="kit_item_input" type="text" name="item[item_name]">
+      </div>
+      <div class="field">
+        <label for="item[description]">Name: </label>
+        <textarea class="form_text" type="textarea" name="item[description]"></textarea>
+      </div>
+      <div class="submit">
+        <button type="submit" class="btn">Add Item</button>
+      </div>
+    </form> -->
+
   </div>
 
 </div>

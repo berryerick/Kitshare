@@ -28,6 +28,9 @@ class KitsController < ApplicationController
     @categories = Category.all
     @kit = Kit.find(params['id'])
     @kit_user = User.find(@kit.user_id)
+    @kit_items = Kit.find(params['id']).items
+    puts @kit_items
+    @item = Kit.find(params["id"]).items.new
   end
 
   def edit
