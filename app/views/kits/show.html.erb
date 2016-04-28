@@ -1,73 +1,27 @@
-<header>
-  <div class="logo">
-    <h1>KitShare</h1>
-  </div>
-  <div class="header_links">
-    <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
-  </div>
-</header>
-<%= render partial: "/partials/nav"%>
+<%= render "/header" %>
+
 <div class="main_content">
 
-  <div class="box kit_info">
-    <div class="box_title">
-      <h2><%= @kit.title %></h2>
+    <div class="kit">
+      <div class="kit_header">
+        <form action="/kits/<%= @kit.id %>">
+          <button class="kit_title" type="submit"><h2><%= @kit.title %></h2></button>
+        </form>
+      </div>
+
+      <h4 class="kit_owner">By <%= @kit_user.first_name %> <%= @kit_user.last_name %></h4>
+      <p class="kit_description"><%= @kit.description %></p>
+      <div class="kit_items kit_dropdown">
+        <% Kit.find(@kit.id).items.each do |item| %>
+          <div class="kit_item">
+            <form action="/items/<%= @kit.id %>">
+              <button class="item_name" type="submit"><h5><%= item.item_name %></h5></button>
+            </form>
+            <%=image_tag item.item_img.url%>
+            <p class="item_description"><%= item.description %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <h4 class="box_description">by <%= @kit_user.first_name %> <%= @kit_user.last_name %></h4>
-    <p class="box_description"><%= @kit.description %></p>
-  </div>
-
-  <div class="content">
-
-  <%if @kit_items.length>0 %>
-  <% @kit_items.each do |item| %>
-    <div class="box">
-      <div class="box_title">
-        <h3><%= item.item_name %></h3>
-      </div>
-      <p class="box_description"><%= item.description %></p>
-      <div class="box_img_crop">
-        <%= image_tag item.item_img.url %>
-      </div>
-      <div class="box_actions">
-        <a href="/items/<%= item.id %>/edit">Edit</a> |
-        <a href="/items/<%= item.id %>" data-method="delete">Delete</a>
-      </div>
-
-    </div>
-  <%end%>
-  <%end%>
-
-    <%= form_for @item, :url => @items_path, :html =>{:multipart => true, :class => "box item_form"} do |f|%>
-      <h3 class="box_title">Create a new Kit item</h3>
-      <p class="box_description">Create a new item and add it to your kit</p>
-      <div class="box_img_crop">
-        <%= f.text_field :item_name, class: "input input_border", placeholder: "Item Name" %>
-        <div class="input input_border">
-          <%= f.label :item_Img %>
-          <%= f.file_field :item_img %>
-        </div>
-        <%= f.hidden_field :kit_id, value: "#{@kit.id}"%>
-        <%= f.text_area :description , class: "input textarea input_border", placeholder: "Item Description" %>
-        <%= f.submit :create, class: "submit" %>
-      </div>
-    <% end %>
-    <!-- <form class="box" action="/items" method="post">
-      <h3>create a new kit item</h3>
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <div class="field">
-        <label for="item[item_name]">Name: </label>
-        <input class="kit_item_input" type="text" name="item[item_name]">
-      </div>
-      <div class="field">
-        <label for="item[description]">Name: </label>
-        <textarea class="form_text" type="textarea" name="item[description]"></textarea>
-      </div>
-      <div class="submit">
-        <button type="submit" class="btn">Add Item</button>
-      </div>
-    </form> -->
-
-  </div>
 
 </div>

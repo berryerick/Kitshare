@@ -73,33 +73,35 @@ header{
     position: fixed;
     display: inline-block;
     width: 100%;
-    height: 56px;
-    text-align: left;
+    height: 58px;
     border-right: 2px solid var(--accent-color);
-    /*border-bottom-right-radius:  10px;*/
     vertical-align: top;
-    background-color: white;
   }
+
     ul.nav{
       display: inline-block;
     }
       ul.nav li{
         display: inline-block;
+        box-shadow: 0 0 10px var(--accenthover-color)
       }
+
     nav form{
       background-color: none;
       text-align: center;
-      vertical-align: middle;
+      vertical-align: top;
       min-width: 250px;
-      border-right: 2px solid var(--accent-color);
-      border-bottom: 8px solid var(--accent-color);
+      /*border-right: 2px solid var(--accent-color);*/
+      /*border-bottom: 8px solid var(--accent-color);*/
       padding: 5px;
+
 
 
     }
     .dropdown{
       vertical-align: top;
       background-color: white;
+      border-bottom: 8px solid var(--accent-color);
     }
 
     .nav-btn{
@@ -120,50 +122,34 @@ header{
       color: white;
       display: none;
       overflow-x: hidden;
-      border-bottom: 8px solid var(--accent-color);
     }
     .nav_link:hover{
       background-color: var(--accenthover-color);
     }
     .nav_link input{
-      color: var(--whitehover-color);
+      color: white;
       font-weight: bold;
     }
 
     .dropdown:hover .dropdown-content{
       display: inline-block;
     }
-    button.nav_create{
-      margin-top: 5px;
-    }
-    input.nav_create{
-      margin-top: 5px;
-    }
 
 
-form.new{
-  margin-top: 100px;
-  display: inline-block;
-  width: 380px;
-  padding-top: 20px;
-  border: 2px solid var(--accent-color);
-  border-bottom: 8px solid var(--accent-color);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
+
   div.field{
-    height: 30px;
+    margin-top: 10px;
   }
-    form.new label{
-      font-size: 1.125em;
+    label{
       display: inline-block;;
       width: 150px;
       text-align: right;
       margin-right: 20px;
     }
-.form_text{
+
+.form_input{
   height: 25px;
-  width: 170px;
+  width: 150px;
   border: 2px solid var(--input-color);
   border-radius: 3px;
   vertical-align: middle;
@@ -186,7 +172,7 @@ form.new{
     padding-top: 8px;
   }
 
-button.btn{
+button.submit_btn{
   padding: 5px 10px;
   background-color: var(--input-color);
   font-size: 1em;
@@ -227,7 +213,7 @@ form.create_kit{
 div.main_content{
   padding-top: 200px;
 }
-  div.kit{
+  .kit{
     width: 700px;
     min-height: 150px;
     border-bottom: 8px solid var(--accent-color);
@@ -238,13 +224,38 @@ div.main_content{
     border-top: 1px solid var(--accent-color);
     border-radius: 3px;
   }
+  div.kit_header{
+    width: 100%;
+    background-color: var(--accent-color);
+    text-align: left;
+    height: 30px;
+
+  }
+    .kit_header form{
+      display: inline-block;
+      height: 30px;
+      vertical-align: top;
+    }
+    .kit_header form:hover{
+      background-color: var(--accenthover-color);
+    }
     .kit_title{
-      width: 100%;
-      background-color: var(--accent-color);
+      width: 580px;
+      background: none;
+      display: inline-block;
       padding: 5px 10px;
       text-align: left;
       color: white;
-      font-weight: 300;
+    }
+
+    .like_btn{
+      width:75px;
+      color: white;
+      display: inline-block;
+      vertical-align: middle;
+      background: none;
+      padding: 5px;
+      vertical-align: top;
     }
     .kit_owner{
       text-align: left;
@@ -259,7 +270,7 @@ div.main_content{
 
     div.kit_item{
       width: 200px;
-      height: 240px;
+      height: 320px;
       /*border-right: 2px solid var(--accent-color);*/
       border-bottom: 8px solid var(--accent-color);
       border-top: 1px solid var(--accent-color);
@@ -274,10 +285,14 @@ div.main_content{
       }
       .item_name{
         width: 100%;
-        padding: 3px;
+        padding: 5px;
         background-color: var(--accent-color);
         color: white;
         text-align: left;
+        font-size: 1em;
+      }
+      .item_name:hover{
+        background-color: var(--accenthover-color);
       }
 
       .kit_item img{
@@ -285,4 +300,8 @@ div.main_content{
         object-position: center;
         height: 200px;
         width: 200px;
+      }
+      .item_description{
+        padding: 5px;
+        text-align: left;
       }

@@ -1,28 +1,22 @@
-<header>
-  <div class="logo">
-    <h1>KitShare</h1>
-  </div>
-  <div class="header_links">
-    <p>Don't have an account? <a href="/users/new">Register!</a> </p>
-  </div>
-</header>
-<div class="backsplash">
-  <form class="new" action="/sessions" method="post">
+<%= render "/header" %>
 
+<div class="main_content">
+  <form class="kit" action="/sessions" method="post">
+    <div class="kit_header"></div>
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
     <div class="field">
       <label for="user[email]">Email:</label>
-      <input class="form_text" type="text" name="user[email]" >
+      <input class="form_input" type="text" name="user[email]" >
     </div>
 
     <div class="field">
       <label for="user[password]">Password:</label>
-      <input class="form_text" type="password" name="user[password]" >
+      <input class="form_input" type="password" name="user[password]" >
     </div>
 
-    <div class="submit">
-      <button type="submit" class="btn">Login</button>
+    <div class="field">
+      <button type="submit" class="submit_btn">Login</button>
     </div>
     <% if flash[:login_errors] %>
     <div class="errors">

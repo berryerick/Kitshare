@@ -25,6 +25,8 @@ class UsersController < ApplicationController
   def show
     @my_kits = User.find(session[:user_id]).kits
     @categories = Category.all
+    @user = User.find(session[:user_id])
+    @liked = Like.where(user_id: session[:user_id])
 
 
   end
