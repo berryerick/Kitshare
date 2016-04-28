@@ -1,2 +1,16 @@
-<h1>Items#edit</h1>
-<p>Find me in app/views/items/edit.html.erb</p>
+<%= form_for @item, :url => {action: "update"},  :html =>{:multipart => true, :class => "box item_form"} do |f|%>
+  <h3 class="box_title">edit your kit item</h3>
+  <div >
+    <%= f.text_field :item_name, class: "input input_border", placeholder: "Item Name" %>
+    <div class="box_img_crop">
+      <%=image_tag @item.item_img.url%>
+    </div>
+    <div class="input input_border">
+
+      <%= f.label :New_Img %>
+      <%= f.file_field :item_img%>
+    </div>
+    <%= f.text_area :description , class: "input textarea input_border", placeholder: "Item Description" %>
+    <%= f.submit :update, class: "submit" %>
+  </div>
+<% end %>

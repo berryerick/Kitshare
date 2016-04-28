@@ -14,10 +14,10 @@
  *= require_self
  */
 :root{
-  --accent-color: #E84E2C;
-  --input-color: #64ACBC;
+  --accent-color: #074F57;
+  --input-color: #CE8E2D;
   --whitehover-color: #E8DCDA;
-  --accenthover-color: #DD6E52;
+  --accenthover-color: #3E7F87;
 
 }
 *{
@@ -56,6 +56,7 @@ header{
   }
 
 form.new{
+  margin-top: 100px;
   display: inline-block;
   width: 380px;
   padding-top: 20px;
@@ -179,12 +180,13 @@ button.btn{
 }
 
 a{
-   color: #63ACBC;
-   /*font-size: 1.25em;*/
-   text-decoration: none;
+  color: var(--input-color);
+  /*font-size: 1.25em;*/
+  text-decoration: none;
 }
 a:hover{
-  color: #53909E
+  color: var(--accenthover-color);
+
 }
 
 div.container{
@@ -212,10 +214,13 @@ form.create_kit{
   }
 
 div.main_content{
-  padding-top: 100px;
+  padding-top: 180px;
   padding-left: 20px;
 }
-
+div.kit_info{
+  /*background-color: var(--accent-color);*/
+  width: 90%;
+}
 .box{
   display: inline-block;
   width: 300px;
@@ -249,7 +254,6 @@ div.main_content{
     overflow: hidden;
     text-align: center;
     /*background-color: var(--accenthover-color);*/
-
   }
     .box_img_crop img{
       /*margin-top: -100px;*/
@@ -259,6 +263,11 @@ div.main_content{
 
       /*background-color: var(--accenthover-color);*/
     }
+  .box_actions{
+    padding-left: 5px;
+    position: relative;
+    margin-top: -18px;
+  }
   .item_form{
     background-color: var(--accenthover-color);
 
@@ -274,10 +283,10 @@ div.main_content{
 
     }
 
-    .input_border{
-      border: 2px solid var(--input-color);
-      border-radius: 5px;
-    }
+  .input_border{
+    border: 2px solid var(--input-color);
+    border-radius: 5px;
+  }
 
     .textarea{
         resize: none;
@@ -295,4 +304,3 @@ div.main_content{
       text-align: center;
       display: inline-block;
     }
-    h2

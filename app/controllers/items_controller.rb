@@ -22,12 +22,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
+    Item.find(params[:id]).update(item_params)
+    redirect_to kits_path 
   end
 
   def destroy
+    Item.find(params[:id]).destroy
+    redirect_to :back
   end
   private
   def item_params
