@@ -5,6 +5,7 @@ class KitsController < ApplicationController
   def index
     @my_kits = User.find(session[:user_id]).kits
     @categories = Category.all
+    @all_kits = Kit.all.joins(:user).select("*, kits.id as kit_id")
   end
 
   def new

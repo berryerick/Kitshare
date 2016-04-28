@@ -1,56 +1,83 @@
 <header>
-  <div class="logo">
-    <h1>KitShare</h1>
-  </div>
-  <div class="header_links">
-    <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
-  </div>
-</header>
-<nav>
-  <ul class="nav">
+  <div class="banner">
+    <div class="logo">
+      <h1>KitShare</h1>
+    </div>
+    <div class="header_links">
+      <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
+    </div>
 
-    <li class="dropdown">
-        <form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">My Kits</button></form>
+  </div>
+  <nav>
+    <ul class="nav">
+
+      <li class="dropdown">
+          <form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">My Kits</button></form>
+            <div class="dropdown-content">
+              <%if @my_kits%>
+              <% @my_kits.each do |kit|%>
+              <form class="nav_link" action="/kits/<%=kit.id%>">
+                <input class="nav-btn" type="submit" value="<%=kit.title%>">
+              </form>
+              <%end%>
+              <%end%>
+            </div>
+      </li>
+
+      <li class="dropdown"><form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">Categories</button></form>
           <div class="dropdown-content">
-            <%if @my_kits%>
-            <% @my_kits.each do |kit|%>
-            <form class="nav_link" action="/kits/<%=kit.id%>">
-              <input class="nav-btn" type="submit" value="<%=kit.title%>">
-            </form>
+            <% @categories.each do |category| %>
+              <form class="nav_link" action="/categories/<%=category.id%>"><input class="nav-btn" type="submit" value="<%=category.category_name%>"></form>
             <%end%>
-            <%end%>
+
           </div>
-    </li>
+      </li>
+      <li class="dropdown">
+        <form><button type="button" class="nav-btn dropdown">Create a Kew Kit</button></form>
 
-    <li class="dropdown"><form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">Categories</button></form>
-        <div class="dropdown-content">
-          <% @categories.each do |category| %>
-            <form class="nav_link" action="/categories/<%=category.id%>"><input class="nav-btn" type="submit" value="<%=category.category_name%>"></form>
-          <%end%>
+        <!-- <div class="dropdown-content">
 
-        </div>
-    </li>
-    <li class="dropdown">
-      <form><button type="button" class="nav-btn">Create a Kew Kit</button></form>
+        </div> -->
+        <form class="create_kit dropdown-content" action="/kits" method="post">
 
-      <!-- <div class="dropdown-content">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input class="form_text nav_create" type="text" name="kit[title]" placeholder="Kit Title">
+          <textarea class="form_text" name="kit[description]" placeholder="enter a description" rows="4"></textarea>
+          <select class="nav form_text" name="kit[category_id]">
+            <option default selected value="">Pick a category</option>
+            <% @categories.each do |category| %>
+              <option class="form_text nav" value="<%=category.id%>"><%=category.category_name%></option>
+            <%end%>
+            <option class="form_text nav" value="new category">New Category</option>
+          </select>
+          <button type="submit" class="btn nav_create">Create</button>
+        </form>
+      </li>
+      <!-- <li><form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn"></button></form></li> -->
+    </ul>
+  </nav>
+</header>
+<div class="main_content">
 
-      </div> -->
-      <form class="create_kit dropdown-content" action="/kits" method="post">
-
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input class="form_text nav_create" type="text" name="kit[title]" placeholder="Kit Title">
-        <textarea class="form_text" name="kit[description]" placeholder="enter a description" rows="4"></textarea>
-        <select class="nav form_text" name="kit[category_id]">
-          <option default selected value="">Pick a category</option>
-          <% @categories.each do |category| %>
-            <option class="form_text nav" value="<%=category.id%>"><%=category.category_name%></option>
-          <%end%>
-          <option class="form_text nav" value="new category">New Category</option>
-        </select>
-        <button type="submit" class="btn nav_create">Create</button>
+  <% @all_kits.each do |kit| %>
+    <div class="kit">
+      <form action="/kits/<%= kit.kit_id %>">
+        <button class="kit_title" type="submit"><h2><%= kit.title %></h2></button>
       </form>
-    </li>
-    <!-- <li><form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn"></button></form></li> -->
-  </ul>
-</nav>
+      <h4 class="kit_owner">By <%= kit.first_name %> <%= kit.last_name %></h4>
+      <p class="kit_description"><%= kit.description %></p>
+      <div class="kit_items kit_dropdown">
+        <% Kit.find(kit.kit_id).items.each do |item| %>
+          <div class="kit_item">
+            <form action="/items/<%= kit.kit_id %>">
+              <button class="item_name" type="submit"><h4><%= item.item_name %></h4></button>
+            </form>
+            <%=image_tag item.item_img.url%>
+            <p class="item_description"><%= item.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
