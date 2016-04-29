@@ -9,10 +9,11 @@ class ItemsController < ApplicationController
   end
 
   def new
-
+    @item =
     @my_kits = User.find(session[:user_id]).kits
     @user = User.find(session[:user_id])
     @categories = Category.all
+    @item = Kit.find(2).items.new
 
 
     if params[:search]

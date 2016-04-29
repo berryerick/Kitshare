@@ -16,9 +16,14 @@
           <div class="kit_item">
             <form action="/items/<%= @kit.id %>">
               <button class="item_name" type="submit"><h5><%= item.item_name %></h5></button>
+
             </form>
             <%=image_tag item.item_img.url%>
+
             <p class="item_description"><%= item.description %></p>
+            <%if session[:user_id] == @kit.user_id %>
+              <a href="/items/<%= item.id %>" data-method=delete>delete</a>
+            <% end%>
           </div>
         <% end %>
         <div class="kit_item">

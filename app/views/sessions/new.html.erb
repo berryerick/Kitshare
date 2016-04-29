@@ -18,9 +18,9 @@
     <div class="field">
       <button type="submit" class="submit_btn">Login</button>
     </div>
-    <% if flash[:login_errors] %>
+    <% if flash[:messages] %>
     <div class="errors">
-          <p class="red"><%=flash[:login_errors]%></p>
+          <p class="red"><%=flash[:messages]%></p>
     </div>
     <%end%>
 

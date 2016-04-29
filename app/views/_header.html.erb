@@ -53,14 +53,13 @@
         <form class="create_kit dropdown-content" action="/kits" method="post">
 
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-          <input class="form_text nav_create" type="text" name="kit[title]" placeholder="Kit Title">
-          <textarea class="form_text" name="kit[description]" placeholder="enter a description" rows="4"></textarea>
-          <select class="nav form_text" name="kit[category_id]">
+          <input class="item_input nav_create" type="text" name="kit[title]" placeholder="Kit Title">
+          <textarea class="item_input" name="kit[description]" placeholder="enter a description" rows="4"></textarea>
+          <select class="item_input kit_category" name="kit[category_id]">
             <option default selected value="">Pick a category</option>
             <% @categories.each do |category| %>
               <option class="form_text nav" value="<%=category.id%>"><%=category.category_name%></option>
             <%end%>
-            <option class="form_text nav" value="new category">New Category</option>
           </select>
           <button type="submit" class="btn nav_create">Create</button>
         </form>
