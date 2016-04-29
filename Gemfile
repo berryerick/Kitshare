@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'json'
 gem 'hirb'
 gem 'paperclip', "~> 4.2"
 

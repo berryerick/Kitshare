@@ -1,2 +1,52 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<%= render "/header" %>
+
+<div class="main_content">
+  <form class="kit" action="/items/new" method="post">
+    <div class="kit_header"></div>
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+    <div class="field">
+      <input class="form_input" type="text" name="search[item]" placeholder="Item Name" >
+    </div>
+
+    <div class="field">
+      <button type="submit" class="submit_btn">Search</button>
+    </div>
+  </form>
+
+  <div class="kit">
+    <div class="kit_header"></div>
+
+    <% if @results %>
+    <% @results.each do |item| %>
+
+      <%= form_for @item,  :html =>{:multipart => true, :class => "item_form"} do |f|%>
+        <%= f.hidden_field :kit_id, value: @kit.id %>
+        <div class="item_form_name">
+          <%= f.text_field :item_name, class: "item_input", placeholder: "Item Name" %>
+        </div>
+        <img src="<%=item['pagemap']['cse_image'][0]['src'] if item['pagemap']['cse_image']%>" alt="no-image-icon.jpg" />
+        <div class="item_img_input" hidden="true">
+          <%= f.file_field :item_img, class: "item_img_upload", value: item["pagemap"]['cse_image'][0]['src'] if item["pagemap"]['cse_image'] %>
+        </div>
+        <p class="item_description"><%= item["title"] %></p>
+        <%= f.text_area :description , class: "item_description_input", value: item["title"] %>
+        <div class="item_submit">
+          <%= f.submit :Create, class: "submit_btn" %>
+        </div>
+      <% end %>
+        <div class="kit_item">
+          <form action="/items/<% %>">
+            <button class="item_name" type="submit"><h5><%= item["title"] %></h5></button>
+          </form>
+          <!-- <p><%=item["pagemap"]%></p> -->
+          <img src="<%=item["pagemap"]['cse_image'][0]['src'] if item["pagemap"]['cse_image']%>" alt="No image" />
+          <p class="item_description"><%= item["title"] %></p>
+        </div>
+
+    <% end %>
+    <% end %>
+  </div>
+
+
+</div>
