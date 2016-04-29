@@ -18,7 +18,7 @@
         <h2 class="likes_counter"><%= @likes %></h2>
       </div>
 
-      <h4 class="kit_owner">By <%= @user.first_name %> <%= @user.last_name %></h4>
+      <h4 class="kit_owner">By <%= @user.first_name %><%= @user.last_name %></h4>
       <p class="kit_description"><%= kit.description %></p>
       <div class="kit_items kit_dropdown">
         <% Kit.find(kit.id).items.each do |item| %>

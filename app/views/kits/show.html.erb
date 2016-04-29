@@ -21,6 +21,37 @@
             <p class="item_description"><%= item.description %></p>
           </div>
         <% end %>
+        <div class="kit_item">
+          <%= form_for @item,  :html =>{:multipart => true, :class => "item_form"} do |f|%>
+              <%= f.hidden_field :kit_id, value: @kit.id %>
+              <div class="item_form_name">
+                <%= f.text_field :item_name, class: "item_input", placeholder: "Item Name" %>
+              </div>
+              <div class="item_img_input">
+                <%= f.file_field :item_img, class: "item_img_upload"%>
+              </div>
+              <%= f.text_area :description , class: "item_description_input", placeholder: "Item Description" %>
+              <div class="item_submit">
+                <%= f.submit :Create, class: "submit_btn" %>
+              </div>
+          <% end %>
+          <!-- <form class="item_form" action="/items" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input type="hidden" name="item[kit_id]" value="<%= @kit.id %>">
+            <div class="item_form_name">
+              <input class="item_input"name="item[item_name]" type="text" placeholder="New Item">
+            </div>
+            <div class="item_img_input">
+              <input type="file" name="item[item_img]" id="item_item_img" multipart="true">
+            </div>
+            <textarea name="item[description]" class="item_description_input" placeholder="Item Description"></textarea>
+            <div class="item_submit">
+              <button type="submit" class="submit_btn">Create</button>
+            </div>
+          </form> -->
+
+        </div>
+
       </div>
     </div>
 
