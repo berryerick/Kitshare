@@ -11,10 +11,12 @@
 
       <h4 class="kit_owner">By <%= @kit_user.first_name %> <%= @kit_user.last_name %></h4>
       <p class="kit_description"><%= @kit.description %></p>
+
       <div class="kit_items kit_dropdown">
+
         <% Kit.find(@kit.id).items.each do |item| %>
           <div class="kit_item">
-            <form action="/items/<%= @kit.id %>">
+            <form action="/items/<%= item[:id] %>">
               <button class="item_name" type="submit"><h5><%= item.item_name %></h5></button>
 
             </form>
@@ -26,13 +28,17 @@
             <% end%>
           </div>
         <% end %>
+
+        <%if @kit.user_id == session[:user_id] %>
         <div class="kit_item">
           <%= form_for @item,  :html =>{:multipart => true, :class => "item_form"} do |f|%>
               <%= f.hidden_field :kit_id, value: @kit.id %>
               <div class="item_form_name">
+
                 <%= f.text_field :item_name, class: "item_input", placeholder: "Item Name" %>
               </div>
               <div class="item_img_input">
+                <h4>Create a new item or <a href="/items/new/<%= @kit.id%>">find it!</a></h4>
                 <%= f.file_field :item_img, class: "item_img_upload"%>
               </div>
               <%= f.text_area :description , class: "item_description_input", placeholder: "Item Description" %>
@@ -40,22 +46,9 @@
                 <%= f.submit :Create, class: "submit_btn" %>
               </div>
           <% end %>
-          <!-- <form class="item_form" action="/items" method="post">
-            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <input type="hidden" name="item[kit_id]" value="<%= @kit.id %>">
-            <div class="item_form_name">
-              <input class="item_input"name="item[item_name]" type="text" placeholder="New Item">
-            </div>
-            <div class="item_img_input">
-              <input type="file" name="item[item_img]" id="item_item_img" multipart="true">
-            </div>
-            <textarea name="item[description]" class="item_description_input" placeholder="Item Description"></textarea>
-            <div class="item_submit">
-              <button type="submit" class="submit_btn">Create</button>
-            </div>
-          </form> -->
-
         </div>
+        <% end %>
+
 
       </div>
     </div>

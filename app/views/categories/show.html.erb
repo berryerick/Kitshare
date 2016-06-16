@@ -1,6 +1,14 @@
 <%= render "/header" %>
-<div class="main_content">
 
+
+<div class="main_content">
+<% unless @kits.size > 0 %>
+  <div class="kit">
+    <div class="kit_header">
+    </div>
+    <h1>No kits in this category</h1>
+  </div>
+<% end %>
 
 <% @kits.each do |kit| %>
   <div class="kit">
@@ -16,11 +24,13 @@
           <button type="submit" class="like_btn" name="button"><h2>Unlike</h2></button>
         <% end %>
       </form>
-      <h2 class="likes_counter"><%= kit.likes.count %></h2>
     </div>
 
     <h4 class="kit_owner">By <%= @user.first_name %><%= @user.last_name %></h4>
     <p class="kit_description"><%= kit.description %></p>
+    <%if session[:user_id] == @kit.user_id %>
+      <a href="/kits/<%= @kit.id %>" data-method=delete>delete</a>
+    <% end%>
     <div class="kit_items kit_dropdown">
       <% Kit.find(kit.kit_id).items.each do |item| %>
         <div class="kit_item">

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  post 'items/new/:id' => 'items#new'
+  get  'items/new/:id' => 'items#new'
   resources :users, :sessions, :categories, :likes, :kits, :kit_comments, :kit_items, :items, :item_comments
   root 'kits#index'
-  post 'items/new'
+
   # post 'items/item_search'
 
   # The priority is based upon order of creation: first created -> highest priority.

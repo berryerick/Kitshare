@@ -3,6 +3,7 @@ class KitsController < ApplicationController
   # before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
 
   def index
+    @user = User.find(session[:user_id])
     @my_kits = User.find(session[:user_id]).kits
     @categories = Category.all
     @all_kits = Kit.all.joins(:user).select("*, kits.id as kit_id")
@@ -21,7 +22,6 @@ class KitsController < ApplicationController
       flash[:kit_errors] = kit.errors.full_messages
       redirect_to :back
     end
-
   end
 
   def show

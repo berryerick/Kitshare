@@ -1,7 +1,7 @@
 <%= render "/header" %>
 
 <div class="main_content">
-  <form class="kit" action="/items/new" method="post">
+  <form class="kit" action="/items/new/<%=params[:id]%>" method="post">
     <div class="kit_header"></div>
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
@@ -19,29 +19,20 @@
 
     <% if @results %>
     <% @results.each do |item| %>
-
-      <%= form_for @item,  :html =>{:multipart => true, :class => "item_form"} do |f|%>
-        <%= f.hidden_field :kit_id, value: @kit.id %>
-        <div class="item_form_name">
-          <%= f.text_field :item_name, class: "item_input", placeholder: "Item Name" %>
-        </div>
-        <img src="<%=item['pagemap']['cse_image'][0]['src'] if item['pagemap']['cse_image']%>" alt="no-image-icon.jpg" />
-        <div class="item_img_input" hidden="true">
-          <%= f.file_field :item_img, class: "item_img_upload", value: item["pagemap"]['cse_image'][0]['src'] if item["pagemap"]['cse_image'] %>
-        </div>
-        <p class="item_description"><%= item["title"] %></p>
-        <%= f.text_area :description , class: "item_description_input", value: item["title"] %>
-        <div class="item_submit">
-          <%= f.submit :Create, class: "submit_btn" %>
-        </div>
-      <% end %>
         <div class="kit_item">
-          <form action="/items/<% %>">
-            <button class="item_name" type="submit"><h5><%= item["title"] %></h5></button>
-          </form>
-          <!-- <p><%=item["pagemap"]%></p> -->
-          <img src="<%=item["pagemap"]['cse_image'][0]['src'] if item["pagemap"]['cse_image']%>" alt="No image" />
-          <p class="item_description"><%= item["title"] %></p>
+          <%= form_for @item,  :html =>{:multipart => true, :class => "item_form"} do |f|%>
+              <%= f.hidden_field :kit_id, value: params[:id] %>
+              <div class="item_name">
+                <h5><%= item["title"] %></h5>
+                <%= f.hidden_field :item_name, value: "#{item["title"]}" %>
+              </div>
+              <img src="<%=item["pagemap"]['cse_image'][0]['src'] if item["pagemap"]['cse_image']%>" alt="No image" />
+              <%= f.hidden_field :item_img, value: "#{item["pagemap"]['cse_image'][0]['src'] if item["pagemap"]['cse_image']}"%>
+              <%= f.text_area :description, class: "item_description_input", value: "#{item["title"]}" %>
+              <div class="item_submit">
+                <%= f.submit :Add, class: "submit_btn" %>
+              </div>
+          <% end %>
         </div>
 
     <% end %>

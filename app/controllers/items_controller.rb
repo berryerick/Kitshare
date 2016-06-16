@@ -3,17 +3,15 @@ class ItemsController < ApplicationController
   require 'net/http'
   require 'open-uri'
 
-
-
   def index
   end
 
   def new
-    @item =
+
     @my_kits = User.find(session[:user_id]).kits
     @user = User.find(session[:user_id])
     @categories = Category.all
-    @item = Kit.find(2).items.new
+    @item = Kit.find(params[:id]).items.new
 
 
     if params[:search]
@@ -26,10 +24,10 @@ class ItemsController < ApplicationController
       request = Net::HTTP::Get.new(uri.request_uri)
       response = http.request(request)
       data = response.body
-      @results = JSON.load(data)["items"][0..8]
-      # render json: @results
+      if JSON.load(data)["items"]
+        @results = JSON.load(data)["items"][0..8]
+      end
     end
-
   end
 
   def create
@@ -37,19 +35,24 @@ class ItemsController < ApplicationController
     @item = Kit.find(params[:item]["kit_id"]).items.new(item_params)
     if @item.save
       Kit.find(params[:item]["kit_id"]).kit_items.create(item: Item.last )
-      # KitItem.new(kit_id: )
+      redirect_to "/kits/#{params[:item]['kit_id']}"
     else
       flash[:item_errors] = @item.errors.full_messages
+      redirect_to :back
     end
-    redirect_to :back
-
   end
+
 
   def show
+    puts "in kit item show with", params
+    @categories = Category.all
+    @item = Item.find(params[:id])
   end
+
 
   def edit
     @item = Item.find(params[:id])
+
   end
 
   def update
@@ -63,17 +66,9 @@ class ItemsController < ApplicationController
   end
 
 
-
-
-
-
-
   private
-
-
 
   def item_params
     params.require(:item).permit(:item_name, :item_img, :description)
-
   end
 end

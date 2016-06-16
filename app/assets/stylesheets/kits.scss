@@ -1,3 +1,57 @@
 // Place all the styles related to the Kits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.kit{
+  width: 700px;
+  min-height: 150px;
+  border-bottom: 8px solid var(--accent-color);
+  display: inline-block;
+  margin: 20px auto 0 auto;
+  padding-bottom: 20px;
+  box-shadow: 0 0 10px var(--accenthover-color);
+  border-top: 1px solid var(--accent-color);
+  border-radius: 3px;
+}
+div.kit_header{
+  width: 100%;
+  background-color: var(--accent-color);
+  text-align: left;
+  height: 30px;
+}
+  .kit_header form{
+    display: inline-block;
+    height: 30px;
+    vertical-align: top;
+  }
+  .kit_header form:hover{
+    background-color: var(--accenthover-color);
+  }
+  .kit_title{
+    width: 580px;
+    background: none;
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: left;
+    color: white;
+  }
+
+  .like_btn{
+    width:75px;
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    background: none;
+    padding: 5px;
+    vertical-align: top;
+  }
+  .kit_owner{
+    text-align: left;
+    /*background-color: var(--accent-color);*/
+    margin: 5px 10px;
+
+  }
+  .kit_description{
+    text-align: left;
+    margin: 5px 10px;
+  }
