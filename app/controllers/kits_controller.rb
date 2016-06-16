@@ -40,9 +40,12 @@ class KitsController < ApplicationController
   end
 
   def update
+
   end
 
   def destroy
+    Kit.find(params[:id]).destroy
+    redirect_to :back
   end
 
   private

@@ -15,7 +15,7 @@
       <div class="kit_items kit_dropdown">
         <% Kit.find(kit.kit_id).items.each do |item| %>
           <div class="kit_item">
-            <form action="/items/<%= kit.kit_id %>">
+            <form action="/items/<%= item.id %>">
               <button class="item_name" type="submit"><h5><%= item.item_name %></h5></button>
             </form>
             <%=image_tag item.item_img.url%>
@@ -23,6 +23,9 @@
           </div>
         <% end %>
       </div>
+      <%if session[:user_id] == kit.user_id %>
+        <a href="/kits/<%= kit.kit_id %>" data-method=delete>Delete Kit</a>
+      <% end%>
     </div>
   <% end %>
 

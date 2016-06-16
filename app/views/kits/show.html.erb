@@ -51,6 +51,9 @@
 
 
       </div>
+      <%if session[:user_id] == @kit.user_id %>
+        <a href="/kits/<%= @kit.id %>" data-method=delete>Delete Kit</a>
+      <% end%>
     </div>
 
 </div>
