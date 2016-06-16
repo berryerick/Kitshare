@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     user = User.where(email: login_params[:email])[0]
     if user && user.authenticate(login_params[:password])
       session[:user_id] = user[:id]
+      session[:user] = user[:first_name]
       redirect_to :root
     else
       flash[:messages] = "Invalid"

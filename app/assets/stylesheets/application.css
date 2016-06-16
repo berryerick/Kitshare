@@ -45,12 +45,18 @@ header{
   width: 100%;
 }
   div.logo{
-    width: 45%;
+    width: 25%;
     max-width: 450px;
     min-width: 120px;
     display: inline-block;
     vertical-align: middle;
     /*padding: 5px 0;*/
+  }
+  div.welcome{
+    width: 30%;
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
   }
   div.logo h1{
     margin: 10px 20px;
@@ -59,7 +65,7 @@ header{
     /*display: inline;*/
   }
   div.header_links{
-    width: 45%;
+    width: 35%;
     max-width: 450px;
     min-width: 120px;
     display: inline-block;

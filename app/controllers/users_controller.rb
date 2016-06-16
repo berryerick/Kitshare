@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     if user.valid?
       user.save
       session[:user_id] = User.last.id
+      session[:user] = User.last.first_name
       redirect_to kits_path
     else
       flash[:registration_errors] = user.errors.full_messages

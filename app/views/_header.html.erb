@@ -4,6 +4,12 @@
       <h1>KitShare</h1>
     </div>
 
+    <div class="welcome">
+      <%if session[:user]%>
+      <h3>  Welcome <%= session[:user]%>!</h3>
+      <% end %>
+    </div>
+
     <div class="header_links">
       <% if session[:user_id] != nil %>
       <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
