@@ -18,6 +18,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: Kitshare
+  host: localhost
+  password: <%= ENV['KITSHARE_DATABASE_PASSWORD'] %>
+
 
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
@@ -85,5 +88,5 @@ test:
 production:
   <<: *default
   database: Kitshare_production
-  username: Kitshare
+  # username: Kitshare
   password: <%= ENV['KITSHARE_DATABASE_PASSWORD'] %>
