@@ -28,8 +28,8 @@
 
     <h4 class="kit_owner">By <%= @user.first_name %><%= @user.last_name %></h4>
     <p class="kit_description"><%= kit.description %></p>
-    <%if session[:user_id] == @kit.user_id %>
-      <a href="/kits/<%= @kit.id %>" data-method=delete>delete</a>
+    <%if session[:user_id] == kit.user_id %>
+      <a href="/kits/<%= kit.id %>" data-method=delete>delete</a>
     <% end%>
     <div class="kit_items kit_dropdown">
       <% Kit.find(kit.kit_id).items.each do |item| %>
