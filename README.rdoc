@@ -1,3 +1,5 @@
+=begin rdoc
+
 == KitShare
 
 _by Erick Berry_
@@ -7,3 +9,5 @@ _by Erick Berry_
 #Ruby Version: 2.2.4
 
 http://kitshare.tk/
+
+=end
