@@ -1,13 +1,10 @@
-=begin rdoc
 
 == KitShare
 
-_by Erick Berry_
+<em>by Erick Berry</em>
 
-#A Restful Ruby on Rails application for sharing kits for different activities.
+A Restful Ruby on Rails application for sharing kits for different activities.
 
-#Ruby Version: 2.2.4
+Ruby Version: 2.2.4
 
 http://kitshare.tk/
-
-=end
