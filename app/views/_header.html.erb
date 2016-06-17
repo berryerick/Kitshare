@@ -11,17 +11,19 @@
     </div>
 
     <div class="header_links">
+      <p> <a href="https://github.com/berryerick/Kitshare">Github Repository</a> |
       <% if session[:user_id] != nil %>
       <a href="/sessions/<%= session[:user_id] %>" data-method="delete">Logout</a>
       <% else %>
         <%if current_page?(controller: 'sessions', action: 'new')%>
-          <p>New User? <a href="/users/new">Register</a></p>
+          New User? <a href="/users/new">Register</a>
         <%elsif current_page?(controller: 'users', action: 'new')%>
-          <p>Already Have an Account? <a href="/sessions/new">Login</a></p>
+          Already Have an Account? <a href="/sessions/new">Login</a>
 
         <%end%>
 
       <% end %>
+      </p>
     </div>
 
   </div>
