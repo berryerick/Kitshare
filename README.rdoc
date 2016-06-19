@@ -7,4 +7,4 @@ A Restful Ruby on Rails application for sharing kits for different activities.
 
 Ruby Version: 2.2.4
 
-http://kitshare.tk/
+http://kitshare.tk

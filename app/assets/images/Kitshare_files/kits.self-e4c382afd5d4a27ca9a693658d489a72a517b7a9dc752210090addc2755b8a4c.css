@@ -1,0 +1,66 @@
+/* line 5, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.kit {
+  width: 700px;
+  min-height: 150px;
+  border-bottom: 8px solid var(--accent-color);
+  display: inline-block;
+  margin: 20px auto 0 auto;
+  padding-bottom: 20px;
+  box-shadow: 0 0 10px var(--accenthover-color);
+  border-top: 1px solid var(--accent-color);
+  border-radius: 3px;
+}
+
+/* line 16, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+div.kit_header {
+  width: 100%;
+  background-color: var(--accent-color);
+  text-align: left;
+  height: 30px;
+}
+
+/* line 22, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.kit_header form {
+  display: inline-block;
+  height: 30px;
+  vertical-align: top;
+}
+
+/* line 27, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.kit_header form:hover {
+  background-color: var(--accenthover-color);
+}
+
+/* line 30, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.kit_title {
+  width: 580px;
+  background: none;
+  display: inline-block;
+  padding: 5px 10px;
+  text-align: left;
+  color: white;
+}
+
+/* line 39, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.like_btn {
+  width: 75px;
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  background: none;
+  padding: 5px;
+  vertical-align: top;
+}
+
+/* line 48, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.kit_owner {
+  text-align: left;
+  /*background-color: var(--accent-color);*/
+  margin: 5px 10px;
+}
+
+/* line 54, /Users/Erick/Desktop/coding_dojo/3_Ruby/Project/Kitshare/app/assets/stylesheets/kits.scss */
+.kit_description {
+  text-align: left;
+  margin: 5px 10px;
+}

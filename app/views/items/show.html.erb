@@ -4,6 +4,7 @@
     <div class="kit_header">
       <h3 class="kit_title"><%= @item.item_name %></h3>
     </div>
-    <%= image_tag @item.item_img.url%>
+    <div class="item_show_img"><%= image_tag @item.item_img.url%></div>
     <p><%=@item.description%></p>
+    
   </div>

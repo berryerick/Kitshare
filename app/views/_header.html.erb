@@ -1,7 +1,7 @@
 <header>
   <div class="banner">
     <div class="logo">
-      <h1>KitShare</h1>
+      <a href="/"><h1>KitShare</h1></a>
     </div>
 
     <div class="welcome">
@@ -30,7 +30,9 @@
   <% if session[:user_id] != nil %>
   <nav>
     <ul class="nav">
-
+      <li class="dropdown">
+        <form action="/"><button type="submit" class="nav-btn">Home</button></form>
+      </li>
       <li class="dropdown">
           <form action="/users/<%=session[:user_id]%>"><button type="submit" class="nav-btn">My Kits</button></form>
             <div class="dropdown-content">
@@ -40,7 +42,10 @@
                 <input class="nav-btn" type="submit" value="<%=kit.title%>">
               </form>
               <%end%>
+              <% else %>
+              <form class="nav-btn">No Kits Yet!</form>
               <%end%>
+
             </div>
       </li>
 
