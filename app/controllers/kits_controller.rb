@@ -45,7 +45,7 @@ class KitsController < ApplicationController
 
   def destroy
     Kit.find(params[:id]).destroy
-    redirect_to :back
+    redirect_to :root
   end
 
   private
